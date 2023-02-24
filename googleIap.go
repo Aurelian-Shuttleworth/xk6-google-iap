@@ -28,7 +28,7 @@ func (*GoogleIap) GetToken(audience string, saKey string) string {
 func GetIdToken(audience string, credentials string) *oauth2.Token {
 	ctx := context.Background()
 
-	tokenSource, err := idtoken.NewTokenSource(ctx, audience, idtoken.WithCredentialsJSON([]byte(credentials)))
+	tokenSource, err := idtoken.NewTokenSource(ctx, audience, idtoken.WithCredentialsFile(credentials))
 	if err != nil {
 		fmt.Printf("[k6/x/googleIapToken][error]: %v\n", err.Error())
 		return nil
